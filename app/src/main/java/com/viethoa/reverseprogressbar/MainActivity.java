@@ -8,7 +8,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-    private final int PROGRESS = 20;
+    private final int PROGRESS = 10;
     private final int STROKE_WIDTH = 15;
 
     private CountdownProgressBar countdownProgressBar;

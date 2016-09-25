@@ -10,6 +10,14 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:padding="20dp"
+            android:textSize="18sp"
+            android:text="Countdown Progress" />
+
         <com.viethoa.reverseprogressbar.CountdownProgressBar
             android:id="@+id/countdown_progress_bar"
             android:layout_width="120dp"
@@ -33,6 +41,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:padding="20dp"
+            android:textSize="18sp"
+            android:text="Reverse Progress" />
 
         <com.viethoa.reverseprogressbar.ReverseProgressBar
             android:id="@+id/reverse_progress_bar"
