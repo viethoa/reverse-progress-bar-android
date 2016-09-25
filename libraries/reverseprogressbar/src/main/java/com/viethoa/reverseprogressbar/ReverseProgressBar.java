@@ -8,8 +8,10 @@ import android.support.annotation.ColorRes;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.viethoa.R;
+
 /**
- * Created by VietHoa on 24/09/2016.
+ * Created by VietHoa on 25/09/2016.
  */
 
 public class ReverseProgressBar extends View {
@@ -22,6 +24,7 @@ public class ReverseProgressBar extends View {
 
     private RectF rectF;
     private final Paint paint = new Paint();
+
     {
         rectF = new RectF();
         paint.setAntiAlias(true);
@@ -81,7 +84,7 @@ public class ReverseProgressBar extends View {
     }
 
     //----------------------------------------------------------------------------------------------
-    //
+    // Handler
     //----------------------------------------------------------------------------------------------
 
     @Override
@@ -98,12 +101,8 @@ public class ReverseProgressBar extends View {
 
         float finishedSweepAngle = progress / (float) max * arcAngle;
         float unfinishedSweepAngle = arcAngle - finishedSweepAngle;
-        float invertPosition = start + unfinishedSweepAngle;
-        //Log.d("onDraw", String.format("%s, %s, %s", finishedSweepAngle, unfinishedSweepAngle, invertPosition));
 
         paint.setColor(color);
-        canvas.drawArc(rectF, invertPosition, finishedSweepAngle, false, paint);
-        //paint.setColor(Color.TRANSPARENT);
-        //canvas.drawArc(rectF, start, unfinishedSweepAngle, false, paint);
+        canvas.drawArc(rectF, start, unfinishedSweepAngle, false, paint);
     }
 }

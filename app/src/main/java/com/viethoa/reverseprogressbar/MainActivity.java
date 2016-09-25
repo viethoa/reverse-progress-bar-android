@@ -8,27 +8,38 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+    private final int PROGRESS = 20;
+    private final int STROKE_WIDTH = 15;
 
-    private int progress = 10;
+    private CountdownProgressBar countdownProgressBar;
+    private TextView countDownProgressText;
     private ReverseProgressBar reverseProgressBar;
-    private TextView progressText;
+    private TextView reverseProgressText;
+    private int progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        countdownProgressBar = (CountdownProgressBar) findViewById(R.id.countdown_progress_bar);
+        countDownProgressText = (TextView) findViewById(R.id.tv_countdown_progress);
         reverseProgressBar = (ReverseProgressBar) findViewById(R.id.reverse_progress_bar);
-        progressText = (TextView) findViewById(R.id.tv_progress);
+        reverseProgressText = (TextView) findViewById(R.id.tv_reverse_progress);
 
-        initializeReverseProgress();
+        progress = PROGRESS;
+        initializeProgress();
     }
 
-    private void initializeReverseProgress() {
+    private void initializeProgress() {
         reverseProgressBar.setMax(progress);
         reverseProgressBar.setProgress(progress);
+        reverseProgressBar.setStrokeWidth(STROKE_WIDTH);
         reverseProgressBar.strockCap(true);
-        reverseProgressBar.setStrokeWidth(20);
+        countdownProgressBar.setMax(progress);
+        countdownProgressBar.setProgress(progress);
+        countdownProgressBar.strockCap(true);
+        countdownProgressBar.setStrokeWidth(STROKE_WIDTH);
 
         final Timer progressSchedule = new Timer();
         progressSchedule.schedule(new TimerTask() {
@@ -41,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
                     updateProgress();
                 }
 
-                if (progress == 3) {
-                    reverseProgressBar.setColor(R.color.colorRed);
+                if (progress == 5) {
+                    countdownProgressBar.setColor(R.color.colorRed);
                 }
             }
         }, 500, 1000);
@@ -52,9 +63,13 @@ public class MainActivity extends AppCompatActivity {
         runOnUiThread(new TimerTask() {
             @Override
             public void run() {
+                countdownProgressBar.setProgress(progress);
+                String rest = String.format("%s", progress);
+                countDownProgressText.setText(rest);
+
                 reverseProgressBar.setProgress(progress);
-                String percent = String.format("%s", progress);
-                progressText.setText(percent);
+                String percent = String.format("%s", PROGRESS - progress) + "%";
+                reverseProgressText.setText(percent);
             }
         });
     }
