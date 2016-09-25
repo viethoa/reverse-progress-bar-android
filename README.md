@@ -16,7 +16,9 @@ Properties
 
 Dependency
 -----
-    Coming soon
+    dependencies {
+        Coming soon
+    }
 
     **Or**:
 
