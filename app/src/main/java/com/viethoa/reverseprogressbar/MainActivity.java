@@ -9,7 +9,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int progress = 200;
+    private int progress = 10;
     private ReverseProgressBar reverseProgressBar;
     private TextView progressText;
 
@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private void initializeReverseProgress() {
         reverseProgressBar.setMax(progress);
         reverseProgressBar.setProgress(progress);
+        reverseProgressBar.strockCap(true);
+        reverseProgressBar.setStrokeWidth(20);
 
         final Timer progressSchedule = new Timer();
         progressSchedule.schedule(new TimerTask() {
@@ -38,8 +40,12 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     updateProgress();
                 }
+
+                if (progress == 3) {
+                    reverseProgressBar.setColor(R.color.colorRed);
+                }
             }
-        }, 0, 1000);
+        }, 500, 1000);
     }
 
     private void updateProgress() {
@@ -47,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 reverseProgressBar.setProgress(progress);
-                String percent = String.format("%s", progress) + "%";
+                String percent = String.format("%s", progress);
                 progressText.setText(percent);
             }
         });

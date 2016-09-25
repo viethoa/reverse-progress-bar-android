@@ -2,12 +2,10 @@ package com.viethoa.reverseprogressbar;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.annotation.ColorRes;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 /**
@@ -24,13 +22,10 @@ public class ReverseProgressBar extends View {
 
     private RectF rectF;
     private final Paint paint = new Paint();
-
     {
         rectF = new RectF();
         paint.setAntiAlias(true);
-        paint.setStrokeWidth(strokeWidth);
         paint.setStyle(Paint.Style.STROKE);
-        //paint.setStrokeCap(Paint.Cap.ROUND);
     }
 
     public ReverseProgressBar(Context context) {
@@ -61,7 +56,6 @@ public class ReverseProgressBar extends View {
 
     public void setMax(int max) {
         this.max = max;
-        invalidate();
     }
 
     public void setProgress(int progress) {
@@ -75,6 +69,15 @@ public class ReverseProgressBar extends View {
 
     public void setStrokeWidth(int strokeWidth) {
         this.strokeWidth = strokeWidth;
+        paint.setStrokeWidth(strokeWidth);
+    }
+
+    public void strockCap(boolean strockCap) {
+        if (strockCap) {
+            paint.setStrokeCap(Paint.Cap.ROUND);
+        } else {
+            paint.setStrokeCap(Paint.Cap.SQUARE);
+        }
     }
 
     //----------------------------------------------------------------------------------------------
@@ -96,13 +99,11 @@ public class ReverseProgressBar extends View {
         float finishedSweepAngle = progress / (float) max * arcAngle;
         float unfinishedSweepAngle = arcAngle - finishedSweepAngle;
         float invertPosition = start + unfinishedSweepAngle;
-        Log.d("onDraw", String.format("%s, %s, %s", finishedSweepAngle, unfinishedSweepAngle, invertPosition));
+        //Log.d("onDraw", String.format("%s, %s, %s", finishedSweepAngle, unfinishedSweepAngle, invertPosition));
 
-        paint.setColor(Color.TRANSPARENT);
-        canvas.drawArc(rectF, start, unfinishedSweepAngle, false, paint);
         paint.setColor(color);
         canvas.drawArc(rectF, invertPosition, finishedSweepAngle, false, paint);
+        //paint.setColor(Color.TRANSPARENT);
+        //canvas.drawArc(rectF, start, unfinishedSweepAngle, false, paint);
     }
-
-
 }
