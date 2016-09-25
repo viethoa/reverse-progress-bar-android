@@ -27,6 +27,7 @@ Dependency
 How to use
 -----
 **Step 1:** add xml: please set Width and Height for it.
+
     <com.viethoa.reverseprogressbar.ReverseProgressBar
             android:id="@+id/reverse_progress_bar"
             android:layout_width="120dp"
@@ -34,6 +35,7 @@ How to use
             android:layout_gravity="center" />
 
 **Step 2:** config in your code:
+
         reverseProgressBar.setMax(progress);
         reverseProgressBar.setProgress(progress);
         reverseProgressBar.setStrokeWidth(STROKE_WIDTH);
