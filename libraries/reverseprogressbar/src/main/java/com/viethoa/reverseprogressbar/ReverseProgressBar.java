@@ -101,8 +101,9 @@ public class ReverseProgressBar extends View {
 
         float finishedSweepAngle = progress / (float) max * arcAngle;
         float unfinishedSweepAngle = arcAngle - finishedSweepAngle;
+        float invertPosition = start + finishedSweepAngle;
 
         paint.setColor(color);
-        canvas.drawArc(rectF, start, unfinishedSweepAngle, false, paint);
+        canvas.drawArc(rectF, invertPosition, unfinishedSweepAngle, false, paint);
     }
 }
