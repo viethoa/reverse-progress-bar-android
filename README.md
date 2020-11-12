@@ -12,7 +12,7 @@ Properties
 - setStrokeWidth: set width of the stroke.
 - strockCap: using that to make cap when progressing.
 
-![](https://github.com/viethoa/image-repositories/blob/master/reverse-progress-bar.gif "reverse progress bar")
+![](https://github.com/viethoa/image-repositories/blob/master/reverse-progress-bar-2.gif "reverse progress bar")
 
 Dependency
 -----
