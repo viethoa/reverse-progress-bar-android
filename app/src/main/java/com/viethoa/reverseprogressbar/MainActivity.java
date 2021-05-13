@@ -1,5 +1,6 @@
 package com.viethoa.reverseprogressbar;
 
+import android.animation.ValueAnimator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -7,7 +8,7 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ValueAnimator.AnimatorUpdateListener {
     private final int PROGRESS = 10;
     private final int STROKE_WIDTH = 15;
 
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView countDownProgressText;
     private ReverseProgressBar reverseProgressBar;
     private TextView reverseProgressText;
+    private FillCountdownProgressBar fillCountdownProgressBar;
     private int progress;
 
     @Override
@@ -22,13 +24,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        countdownProgressBar = (CountdownProgressBar) findViewById(R.id.countdown_progress_bar);
-        countDownProgressText = (TextView) findViewById(R.id.tv_countdown_progress);
-        reverseProgressBar = (ReverseProgressBar) findViewById(R.id.reverse_progress_bar);
-        reverseProgressText = (TextView) findViewById(R.id.tv_reverse_progress);
+        countdownProgressBar = findViewById(R.id.countdown_progress_bar);
+        countDownProgressText = findViewById(R.id.tv_countdown_progress);
+        reverseProgressBar = findViewById(R.id.reverse_progress_bar);
+        reverseProgressText = findViewById(R.id.tv_reverse_progress);
+        fillCountdownProgressBar = findViewById(R.id.fill_countdown_progress_bar);
 
         progress = PROGRESS;
         initializeProgress();
+        initFillCountdownProgress();
     }
 
     private void initializeProgress() {
@@ -72,5 +76,22 @@ public class MainActivity extends AppCompatActivity {
                 reverseProgressText.setText(percent);
             }
         });
+    }
+
+    private void initFillCountdownProgress() {
+        fillCountdownProgressBar.setMax(progress);
+        fillCountdownProgressBar.setProgress(progress);
+
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0.1f, PROGRESS);
+        valueAnimator.setDuration(PROGRESS * 1000);
+        valueAnimator.addUpdateListener(this);
+        valueAnimator.setStartDelay(500);
+        valueAnimator.start();
+    }
+
+    @Override
+    public void onAnimationUpdate(ValueAnimator animator) {
+        float value = (float) animator.getAnimatedValue();
+        fillCountdownProgressBar.setProgress(PROGRESS - value);
     }
 }

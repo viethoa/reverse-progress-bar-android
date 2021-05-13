@@ -99,7 +99,7 @@ public class ReverseProgressBar extends View {
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        float finishedSweepAngle = progress / (float) max * arcAngle;
+        float finishedSweepAngle = ((progress / (float) max) * arcAngle);
         float unfinishedSweepAngle = arcAngle - finishedSweepAngle;
         float invertPosition = start + finishedSweepAngle;
 

@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ReverseProgressBar.iml" filepath="$PROJECT_DIR$/ReverseProgressBar.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/libraries/libraries.iml" filepath="$PROJECT_DIR$/libraries/libraries.iml" />
-      <module fileurl="file://$PROJECT_DIR$/libraries/reverseprogressbar/reverseprogressbar.iml" filepath="$PROJECT_DIR$/libraries/reverseprogressbar/reverseprogressbar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/revert-progress-bar.iml" filepath="$PROJECT_DIR$/.idea/modules/revert-progress-bar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/revert-progress-bar.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/revert-progress-bar.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/libraries/revert-progress-bar.libraries.iml" filepath="$PROJECT_DIR$/.idea/modules/libraries/revert-progress-bar.libraries.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/libraries/reverseprogressbar/revert-progress-bar.libraries.reverseprogressbar.iml" filepath="$PROJECT_DIR$/.idea/modules/libraries/reverseprogressbar/revert-progress-bar.libraries.reverseprogressbar.iml" />
     </modules>
   </component>
 </project>

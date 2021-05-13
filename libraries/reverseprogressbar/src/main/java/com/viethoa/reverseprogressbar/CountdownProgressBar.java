@@ -98,7 +98,7 @@ public class CountdownProgressBar extends View {
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        float finishedSweepAngle = progress / (float) max * arcAngle;
+        float finishedSweepAngle = ((progress / (float) max) * arcAngle);
         float unfinishedSweepAngle = arcAngle - finishedSweepAngle;
         float invertPosition = start + unfinishedSweepAngle;
         //Log.d("onDraw", String.format("%s, %s, %s", finishedSweepAngle, unfinishedSweepAngle, invertPosition));
